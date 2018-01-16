@@ -495,6 +495,7 @@ Deploy to Rinkeby
     sh deployfrontend.sh
 
 5) Go to Github settings
+    - Git cheatsheat: ndpsoftware.com/git-cheatsheet.html
 
     1) change source to master branch /docs folder
 
