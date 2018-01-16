@@ -6,7 +6,18 @@ Personal Notes:
 
 
 
+USEFUL COMMANDS AND INFO:
+- https://github.com/ethersphere/swarm 
+    - decentralized web server
 
+check balance: 
+    web3.fromWei(web3.eth.getBalance(web3.eth.accounts[1]), "ether").toNumber()
+
+get instance of contract:
+    ChainList.deployed().then(function(instance){app=instance})
+
+unlock account:
+personal.unlockAccount(eth.coinbase, "INSERT PASSWORD", 600)
 
 
 TRUFFLE:
@@ -356,7 +367,7 @@ Buy and sell multiple objects
 5) get instance
 
     ChainList.deployed().then(function(instance){app=instance})
-
+    
 6) sell two articles from account
 
     web3.fromWei(web3.eth.getBalance(web3.eth.accounts[1]), "ether").toNumber()
@@ -592,10 +603,52 @@ Deploy to Rinkeby:
     - may have to run mulitple times before it works
 
 - can see info about transactions at rinkeby.etherscan.io
+    - good info about gas costs
 
 14) run deployfrontend.sh so proper network will run depending on which account you have in metamask
 
+15) try out website using rinkeby
+    - give github link to others and they can connect with their rinkeby network
 
+========================================================================
+========================================================================
+
+DEPLOY TO MAINNET
+
+1) shut down any running nodes
+
+2) geth --rpc --rpcapi="personal,eth,network,web3,net"
+    - connects to main network
+    - will have to sync
+
+3) add network to truffle.js for live network (in chainlist folder)
+
+    live: {
+        host: "localhost",
+        port: 8545,
+        network_id: 1,
+        from: ACCOUNT WHERE DEPLOY CONTRACTS FROM,  <- default is coinbase
+        gas: MAX GAS TO DEPLOY CONTRACTS
+    }
+
+4) unlock necessary accounts
+
+5) open terminal and cd to directory where Dapp is
+
+6) migrate (account must be unlocked)
+
+    truffle migrate --reset --network live
+
+- Etherscan.io for info about transactions
+    - can go straight to etherscan by clicking transaction in metamask
+
+7) deployfrontend.sh
+
+    - must do after migrating to update ChainList.json
+
+8) Use Dapp!
+    - make sure using metamask on mainnet
+    - can use localhost 8545 if running node on computer
 
 ========================================================================
 ========================================================================
