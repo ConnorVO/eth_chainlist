@@ -1,3 +1,14 @@
+Personal Notes:
+
+
+
+
+
+
+
+
+
+
 TRUFFLE:
     AFTER CHANGING CONTRACT, MUST RUN TRUFFLE MIGRATE --RESET
 
@@ -483,6 +494,9 @@ https://solidity.readthedocs.io/en/latest/contracts.html#inheritance
 Deploy to Rinkeby
 
 1) Make sure stuff is on github
+    - Git cheatsheat: ndpsoftware.com/git-cheatsheet.html
+    - Article for setting up and pushing code: 
+        https://product.hubspot.com/blog/git-and-github-tutorial-for-beginners
 
 2) create directory ('docs') to move files into
 
@@ -495,9 +509,23 @@ Deploy to Rinkeby
     sh deployfrontend.sh
 
 5) Go to Github settings
-    - Git cheatsheat: ndpsoftware.com/git-cheatsheet.html
 
     1) change source to master branch /docs folder
+
+    2) save
+
+    3) creates a link for your site
+        Your site is ready to be published at https://connorvo.github.io/eth_chainlist/.
+
+6) fix errors that arise
+    
+    - big numbers not handled well, so in app.js add .toNumber() to objectId in reloadObjects
+        - this will become a problem when number gets large (JS dones't do large numbers)
+
+7) redeploy front end
+
+    sh deployfrontend.sh
+
 
 
 
@@ -512,8 +540,7 @@ new BigNumber() not a number
     - app.js not handling new paramete properly
 
 
-
-
+Have to reload page for events (MetaMask doesn't do it)
 
 
 
