@@ -491,7 +491,9 @@ https://solidity.readthedocs.io/en/latest/contracts.html#inheritance
 ========================================================================
 ========================================================================
 
-Deploy to Rinkeby
+DEPLOY TO RINKEBY
+
+Setup on GitHub:
 
 1) Make sure stuff is on github
     - Git cheatsheat: ndpsoftware.com/git-cheatsheet.html
@@ -518,6 +520,7 @@ Deploy to Rinkeby
         Your site is ready to be published at https://connorvo.github.io/eth_chainlist/.
 
         - still must run ganache-cli
+        - might have to truffle migrate
 
 6) fix errors that arise
     
@@ -529,7 +532,68 @@ Deploy to Rinkeby
     sh deployfrontend.sh
 
 
+Deploy to Rinkeby:
 
+1) make sure ganache isn't running
+
+2) download blocks of rinkeby chain data
+    ChainSkills/rinkeby
+
+3) go to rinkeby.io and connect yourself using geth
+
+4) download rinkeby.json into directory
+    - save page as
+
+5) initialize node on network
+    - current directory is .
+
+    geth --datadir . init rinkeby.json
+
+6) create some accounts
+    - use stronger password
+
+    geth --datadir . account new
+
+7) script to start rinkeby node
+
+    startrinkebynode.sh
+
+8) start node 
+    
+    sh startrinkebynode.sh
+
+9) check synchronization
+
+    geth attach
+
+    eth.accounts    <- check accounts
+
+    eth.syncing
+
+10) import 3 accounts into Rinkeby
+        import json files from keystore
+
+- Rinkeby uses proof of authority to prevent spam attacks
+    - only certain nodes can authorize blocks
+
+11) add new network to truffle.js for rinkeby (in chainlist folder)
+
+12) unlock account before transaction
+
+    personal.unlockAccount(eth.coinbase, "INSERT PASSWORD", 600)
+
+13) migrate to rinkeby network
+
+    - open new tab and cd into chainlist folder
+
+    truffle migrate --network rinkeby --reset
+
+    - --reset ensures latest build and force deployment
+    - may have to run mulitple times before it works
+
+- can see info about transactions at rinkeby.etherscan.io
+
+14) run deployfrontend.sh so proper network will run depending on which account you have in metamask
 
 
 
