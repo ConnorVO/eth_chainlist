@@ -517,6 +517,8 @@ Deploy to Rinkeby
     3) creates a link for your site
         Your site is ready to be published at https://connorvo.github.io/eth_chainlist/.
 
+        - still must run ganache-cli
+
 6) fix errors that arise
     
     - big numbers not handled well, so in app.js add .toNumber() to objectId in reloadObjects
@@ -525,6 +527,8 @@ Deploy to Rinkeby
 7) redeploy front end
 
     sh deployfrontend.sh
+
+
 
 
 
